@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{fancyhdr}
+\usepackage[a4paper, total ={6in ,8in}]{geometry}
+
+\usepackage[a4paper, left=1in , right = 1in ,bottom=1in,top=1in]{geometry}
+\usepackage{graphicx}
+\begin{document}
+\pagestyle{fancy}
+
+\begin{center}
+\begin{Huge}
+
+Shlok Agrawal \\ \\
+0801CS211081 \\ \\
+PP-final Project \\ \\
+Bank Management System\\ \\
+
+\end{Huge}
+\end{center}
+
+\section{Overview}
+This is a bank management system in which a user can perform actions like: opening an account, depositing/withdrawing money from the account, viewing the account details.
+\section{Code Description and Functions}
+
+The code is divided in to a main function and some specific functions for every action. The main function calls the other functions.
+The following functions were used to make the project:
+
+
+\subsection{Open Account}
+This function can be used to open a new account. The user can provide details like name, address, account type (savings/current), and initial deposit amount.
+\subsection{Deposit money}
+This function can be used to deposit a sum of money to an existing account. The amount to be deposited is taken as input and the balnace is updated accordinlgy.
+\subsection{Withdraw money}
+This function can be used to withdraw a sum of money from an existing account. The amount to be withdrawn is taken as input and the balnace is updated accordinlgy.
+\subsection{Display Account}
+This function can be used to view the details like name, address, account type (savings/current) and account balance of an existing account.
+\section{Code in c++}
+\begin{verbatim}
+    
+
+#include <iostream>
+#include <string>
+#include<bits/stdc++.h>
+using namespace std;
+
+class bank
+{   char name[100], add[100],t;
+    int balance;
+    public:
+        void open_account();
+        void deposit_money();
+        void withdraw_money();
+        void display_account();
+        
+
+};
+void bank::open_account()
+{
+    cout<<"enter name\n";
+    cin.ignore();
+    cin.getline(name,100);
+
+    cout<<"enter address\n";
+    cin.ignore();
+    cin.getline(add,100);
+
+    cout<<"account type saving (s) or current (c)\n";
+    cin>>t;
+
+    cout<<"deposit amount ";
+    cin>>balance;
+    cout<<"account created";
+
+
+}
+    void bank::deposit_money()
+    {   int amount;
+        cout<<"enetr amount to deposit\n";
+        cin>>amount;
+        balance+=amount;
+        cout<<"total balance\n"<<balance;
+        
+
+    }
+void bank::display_account()
+{
+    cout<<"Name:"<<name<<"\n";
+    cout<<"Address:"<<add<<"\n";
+    cout<<"account type"<<t<<"\n";
+    cout<<"Balance:"<<balance<<"\n";
+}
+void bank::withdraw_money()
+{   
+    float amount = 0;
+
+    cout<<"current balance"<<balance<<"\n";
+    while (amount<balance)
+    {
+    cout<<"enter withdrawal amount:";
+    cin>>amount;
+    balance-=amount;
+    }
+    cout<<"balance is"<<balance<<"\n";
+
+}
+
+
+int main()
+{   
+   
+    int menu,x;
+    bank obj;
+    do{
+    cout<<"1. open account\n";
+    cout<<"2. deposit money\n";
+    cout<<"3. withdraw money\n";
+    cout<<"4. display account\n";
+    cout<<"5. Exit\n";
+    cout<<"choose an option ";
+    cin>>menu;
+    switch (menu)
+    {
+    case 1: 
+    obj.open_account();
+    break;
+    case 2: 
+    obj.deposit_money();
+    break;
+    case 3: 
+    obj.withdraw_money();
+    break;
+    case 4: 
+    obj.display_account();
+    break;
+    case 5: exit (1);
+    break;
+    default:
+     cout<<"enter suitable number\n";   
+    }
+    
+    cout<<"\n if you want to select an option press :: 1\n";
+    cout<<"if you want to exit press::0 ";
+    cin>>x;
+    if(x==2)
+    exit(0);
+    } while (x==1);
+   
+}
+\end{verbatim}
+\section{Execution and Compilation}
+
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 19-52-50.png} 
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 19-53-12.png} 
+
+\section{Profiling}
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 19-53-43.png} 
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 19-53-51.png} 
+\section{Debugging}
+The bug found in the deposit money function was that the balance was not updating properly after the new amount deposited was added.
+The error was a missing + sign in the balance updation line which was later fixed.\\ \\
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 22-27-53.png}    
+\includegraphics[scale=0.35]{./Screenshot from 2022-11-20 22-27-59.png} 
+
+
+
+   
+ \end{document}
+
